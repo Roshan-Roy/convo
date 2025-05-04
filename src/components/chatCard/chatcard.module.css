@@ -1,0 +1,47 @@
+.chatCard {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    max-width: 500px;
+    margin: 10px auto;
+  }
+  
+  .chatCard:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .chatAvatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .chatInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chatName {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .chatMessage {
+    font-size: 14px;
+    color: #555;
+    margin: 4px 0;
+  }
+  
+  .chatRoomId {
+    font-size: 12px;
+    color: #999;
+  }
+  
