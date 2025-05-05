@@ -6,6 +6,7 @@
     padding: 3px 20px 3px 3px;
     border-radius: 100vh;
     gap: 15px;
+    cursor: pointer;
 }
 .btn div{
     width: 37px;

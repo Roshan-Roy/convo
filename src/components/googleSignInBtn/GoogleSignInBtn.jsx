@@ -16,9 +16,9 @@ const saveUserToFirestore = async (user) => {
             photoURL: user.photoURL
         }
         await setDoc(userRef, userData, { merge: true })
-    } catch {
+    } catch (e) {
         errorToast("An error occurred")
-        throw new Error("Error saving user data to Firestore")
+        throw e
     }
 }
 

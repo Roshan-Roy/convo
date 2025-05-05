@@ -3,6 +3,7 @@ import { useAuth } from "../../providers/AuthProvider"
 import { setDoc, getDoc, doc } from "firebase/firestore"
 import { db } from "../../config/firebase"
 import { serverTimestamp } from "firebase/firestore"
+import styles from "./joinblock.module.css"
 
 const createChatRoom = async (userOneId, userTwoId) => {
     const roomId = [userOneId, userTwoId].sort().join("_")
@@ -19,11 +20,11 @@ const createChatRoom = async (userOneId, userTwoId) => {
             alert("Room created")
         }
     } catch (e) {
-        console.log("Error : ", e)
+        throw e
     }
 }
 
-const JoinModal = () => {
+const JoinBlock = () => {
     const { user } = useAuth()
     const [code, setCode] = useState("")
     const handleOnChange = (e) => setCode(e.target.value)
@@ -40,7 +41,7 @@ const JoinModal = () => {
                 alert("User not found")
             }
         } catch (e) {
-            console.log("Error : ", e)
+            console.log(e)
         }
     }
     return (
@@ -51,4 +52,4 @@ const JoinModal = () => {
     )
 }
 
-export default JoinModal
+export default JoinBlock
