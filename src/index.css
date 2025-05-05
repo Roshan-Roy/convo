@@ -1,3 +1,13 @@
-body{
-    background-color: #444;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Rubik", sans-serif;
+}
+
+body {
+    color: #222;
+}
+
+:root {
+    --pc: #9F33FF;
 }

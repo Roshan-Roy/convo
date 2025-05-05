@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFCBD1;
+    font-size: 14px;
+    gap: 15px;
+    padding: 12px 0;
+    border-radius: 10px;
+    border: 1px solid #c73436;
+    color: #c73436;
+}
+
+.icon {
+    font-size: 20px;
+}

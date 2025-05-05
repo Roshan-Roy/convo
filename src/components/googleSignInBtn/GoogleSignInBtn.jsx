@@ -3,17 +3,21 @@ import { signInWithPopup } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../providers/AuthProvider"
 import { setDoc, doc } from "firebase/firestore"
+import styles from "./gbtn.module.css"
+import { FcGoogle } from "react-icons/fc"
+import errorToast from "../../toasts/error/errorToast"
 
 const saveUserToFirestore = async (user) => {
-    const userRef = doc(db, "users", user.uid)
-    const userData = {
-        name: user.displayName,
-        email: user.email,
-        photoURL: user.photoURL
-    }
     try {
+        const userRef = doc(db, "users", user.uid)
+        const userData = {
+            name: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL
+        }
         await setDoc(userRef, userData, { merge: true })
     } catch {
+        errorToast("An error occurred")
         throw new Error("Error saving user data to Firestore")
     }
 }
@@ -21,6 +25,7 @@ const saveUserToFirestore = async (user) => {
 const GoogleSignInBtn = () => {
     const { setUser } = useAuth()
     const navigate = useNavigate()
+
     const handleSignInWithGoogle = async () => {
         try {
             const { user } = await signInWithPopup(auth, googleProvider)
@@ -33,11 +38,14 @@ const GoogleSignInBtn = () => {
             })
             navigate("/chatlist")
         } catch (e) {
-            console.log("Error : ", e)
+            console.log(e)
         }
     }
     return (
-        <button onClick={handleSignInWithGoogle}>Sign in with google</button>
+        <div onClick={handleSignInWithGoogle} className={styles.btn}>
+            <div><FcGoogle /></div>
+            <span>Sign in with Google</span>
+        </div>
     )
 }
 
