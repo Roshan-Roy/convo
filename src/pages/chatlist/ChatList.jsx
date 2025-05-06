@@ -3,11 +3,16 @@ import { db } from "../../config/firebase"
 import { collection, where, orderBy, getDoc, doc, query, onSnapshot } from "firebase/firestore"
 import { useAuth } from "../../providers/AuthProvider"
 import ChatCard from "../../components/chatCard/ChatCard"
+import styles from "./chatlist.module.css"
+import { MdHome } from "react-icons/md"
+import ChatListLoader from "../../components/loaders/chatListLoder/ChatListLoader"
+import { NavLink } from "react-router-dom"
 
 const ChatList = () => {
     const { user } = useAuth()
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         const q = query(
@@ -42,26 +47,37 @@ const ChatList = () => {
                     name: e.name,
                     photoURL: e.photoURL,
                     notification: rooms[i].notification[user.id]
-                }));
-
+                }))
                 setUsers(users)
-
-            } catch (error) {
-                console.error("Error :", error);
-            } finally {
                 setLoading(false)
+            } catch (e) {
+                setError(true)
+                console.log(e)
             }
         }, (e) => {
-            setLoading(false)
-            console.log("Error : ", e)
+            setError(true)
+            console.log(e)
         })
         return () => unsubscribe()
     }, [])
 
+    if (error) return <p>An Error occurred</p>
+
     return (
-        <div>
-            {loading ? <p>Loading...</p> : users.map(e => <ChatCard key={e.roomId} {...e} />)}
-        </div>
+        <>
+            <div className={styles.topbar}>
+                <div className={styles.container}>
+                    <NavLink to="/"><MdHome className={styles.icon} /></NavLink>
+                    <input type="text" placeholder="Search" />
+                </div>
+            </div>
+            <div className={styles.adjust}></div>
+            <div className={styles.container}>
+                {loading ?
+                    <div className={styles.loading_wrapper}><ChatListLoader /></div>
+                    : users.map(e => <ChatCard key={e.roomId} {...e} />)}
+            </div>
+        </>
     );
 };
 

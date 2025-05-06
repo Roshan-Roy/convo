@@ -1,0 +1,49 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.topbar {
+    top: 0;
+    height: 65px;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.adjust {
+    height: 65px;
+}
+
+.topbar .container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topbar input {
+    height: 40px;
+    font-size: 14px;
+    border-radius: 100vh;
+    border: 1px solid #ddd;
+    padding: 0 18px;
+    flex: 1;
+}
+
+.topbar .icon{
+    font-size: 30px;
+    color: var(--sc);
+}
+
+.topbar input {
+    width: 100%;
+}
+
+.loading_wrapper{
+    height: calc(100dvh - 65px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

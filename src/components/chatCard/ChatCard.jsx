@@ -12,7 +12,6 @@ const ChatCard = ({ name, photoURL, lastMessage, roomId, notification }) => {
                     {lastMessage ? lastMessage : "No messages yet"}
                 </p>
                 {notification && <span>New message</span>}
-                <p className={styles.chatRoomId}>Room ID: {roomId}</p>
             </div>
         </div>
     );
