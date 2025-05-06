@@ -22,7 +22,12 @@ const Chat = () => {
   const messagesQuery = query(messagesSubCollectionRef, orderBy("sentAt", "asc"))
   const croomRef = doc(db, "crooms", id)
 
-  const handleAddBtn = async () => {
+  const getOtherUserId = (roomId, currentUserId) => {
+    const [id1, id2] = roomId.split("_");
+    return id1 === currentUserId ? id2 : id1;
+  };
+
+  const handleSendBtn = async () => {
     try {
       setBtnLoading(true)
       await addDoc(messagesSubCollectionRef, {
@@ -30,7 +35,9 @@ const Chat = () => {
         senderId: user.id,
         sentAt: serverTimestamp()
       })
+      const otherUserId = getOtherUserId(id, user.id)
       await updateDoc(croomRef, {
+        [`notification.${otherUserId}`]: true,
         lastMessage: newMessage,
         lastMessageAt: serverTimestamp()
       })
@@ -44,10 +51,21 @@ const Chat = () => {
 
   const handleInputChange = (e) => setNewMessage(e.target.value)
 
+  const updateNotification = async () => {
+    try {
+      await updateDoc(croomRef, {
+        [`notification.${user.id}`]: false,
+      })
+    } catch (e) {
+      setError(true)
+      console.log(e)
+    }
+  }
+
   useEffect(() => {
     const checkRoomExists = async () => {
       try {
-        const roomSnap = await getDoc(croomRef);
+        const roomSnap = await getDoc(croomRef)
         if (roomSnap.exists()) {
           setRoomExists(true)
         }
@@ -63,7 +81,7 @@ const Chat = () => {
 
   useEffect(() => {
     if (!roomExists) return
-
+    updateNotification()
     const unsubscribe = onSnapshot(
       messagesQuery,
       (snapshot) => {
@@ -80,7 +98,10 @@ const Chat = () => {
       }
     );
 
-    return () => unsubscribe()
+    return () => {
+      updateNotification()
+      unsubscribe()
+    }
   }, [roomExists])
 
   if (error) return <p>An error occurred.</p>
@@ -97,7 +118,7 @@ const Chat = () => {
         value={newMessage}
         onChange={handleInputChange}
       />
-      <button onClick={handleAddBtn} disabled={btnLoading || !newMessage}>
+      <button onClick={handleSendBtn} disabled={btnLoading || !newMessage}>
         {btnLoading ? "Sending..." : "Send"}
       </button>
 
@@ -107,7 +128,7 @@ const Chat = () => {
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          width:"50%",
+          width: "50%",
         }}
       >
         {loading ? (

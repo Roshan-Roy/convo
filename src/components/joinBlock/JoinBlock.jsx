@@ -25,6 +25,10 @@ const JoinBlock = () => {
             else {
                 await setDoc(doc(db, "crooms", roomId), {
                     users: [userOneId, userTwoId],
+                    notification: {
+                        [userOneId]: false,
+                        [userTwoId]: false
+                    },
                     lastMessage: "",
                     lastMessageAt: serverTimestamp()
                 });

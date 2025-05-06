@@ -1,7 +1,7 @@
 import styles from "./chatcard.module.css"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
-const ChatCard = ({ name, photoURL, lastMessage, roomId }) => {
+const ChatCard = ({ name, photoURL, lastMessage, roomId, notification }) => {
     const navigate = useNavigate()
     return (
         <div className={styles.chatCard} onClick={() => navigate(roomId)}>
@@ -11,6 +11,7 @@ const ChatCard = ({ name, photoURL, lastMessage, roomId }) => {
                 <p className={styles.chatMessage}>
                     {lastMessage ? lastMessage : "No messages yet"}
                 </p>
+                {notification && <span>New message</span>}
                 <p className={styles.chatRoomId}>Room ID: {roomId}</p>
             </div>
         </div>

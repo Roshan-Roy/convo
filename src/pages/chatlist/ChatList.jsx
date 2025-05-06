@@ -40,7 +40,8 @@ const ChatList = () => {
                     roomId: rooms[i].id,
                     lastMessage: rooms[i].lastMessage,
                     name: e.name,
-                    photoURL: e.photoURL
+                    photoURL: e.photoURL,
+                    notification: rooms[i].notification[user.id]
                 }));
 
                 setUsers(users)
