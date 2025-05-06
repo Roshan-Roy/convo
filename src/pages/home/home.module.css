@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 25px;
+    gap: 35px;
 }
 
 .icon {
@@ -23,4 +23,24 @@
 .icon span {
     transform: rotate(-20deg);
     color: white;
+}
+
+.logged_container{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 15px;
+}
+
+.link{
+    display: block;
+    background-color: var(--pc);
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }

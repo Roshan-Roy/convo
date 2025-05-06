@@ -2,12 +2,18 @@
     margin: 0;
     padding: 0;
     font-family: "Rubik", sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --pc: #9F33FF;
+    --sc: #444;
 }
 
 body {
     color: #222;
 }
 
-:root {
-    --pc: #9F33FF;
+input {
+    outline: none;
 }

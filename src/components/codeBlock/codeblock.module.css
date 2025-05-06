@@ -6,8 +6,8 @@
     color: white;
     background-color: var(--pc);
     height: 45px;
-    width: 170px;
     border-radius: 10px;
+    cursor: pointer;
 }
 .container .icon{
     font-size: 18px;

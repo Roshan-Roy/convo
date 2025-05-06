@@ -1,6 +1,9 @@
 import { auth } from "../../config/firebase"
 import { signOut } from "firebase/auth"
 import { useAuth } from "../../providers/AuthProvider"
+import errorToast from "../../toasts/error/errorToast"
+import { RiLogoutCircleRLine } from "react-icons/ri"
+import styles from "./signoutbtn.module.css"
 
 const SignOutBtn = () => {
     const { setUser } = useAuth()
@@ -8,11 +11,15 @@ const SignOutBtn = () => {
         try {
             await signOut(auth)
             setUser(null)
-        } catch {
-            console.log("Error")
+        } catch (e) {
+            errorToast("An error occurred")
+            console.log(e)
         }
     }
-    return <button onClick={handleSignOut} className="bg-gray-600 py-2 px-10 rounded-lg text-white">Logout</button>
+    return <div onClick={handleSignOut} className={styles.btn}>
+        <span className={styles.text}>Logout</span>
+        <RiLogoutCircleRLine className={styles.icon} />
+    </div>
 }
 
 export default SignOutBtn

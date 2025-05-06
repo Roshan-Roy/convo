@@ -1,0 +1,19 @@
+.btn {
+    height: 40px;
+    background-color: var(--sc);
+    color: white;
+    border-radius: 10px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn .text {
+    font-size: 14px;
+}
+
+.btn .icon {
+    font-size: 18px;
+}
