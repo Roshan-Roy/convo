@@ -1,0 +1,26 @@
+.wrapper {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #555;
+    gap: 12px;
+}
+
+.icon {
+    font-size: 80px;
+}
+
+.main {
+    font-size: 18px;
+}
+
+.sub {
+    font-size: 15px;
+}
