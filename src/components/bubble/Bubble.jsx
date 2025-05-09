@@ -1,19 +1,12 @@
 import { useAuth } from "../../providers/AuthProvider"
+import styles from "./bubble.module.css"
 
 const Bubble = ({
     message,
-    senderId,
-    sendAt
+    senderId
 }) => {
     const { user: { id } } = useAuth()
-    return <div style={{
-        backgroundColor: "gray",
-        color: "white",
-        padding: "10px",
-        borderRadius: "10px",
-        display: "inline",
-        alignSelf: id === senderId ? "flex-end" : "flex-start"
-    }}>{message}</div>
+    return <div className={id === senderId ? `${styles.container} ${styles.mine}` : styles.container}>{message}</div>
 }
 
 export default Bubble

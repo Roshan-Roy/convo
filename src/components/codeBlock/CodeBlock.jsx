@@ -10,7 +10,7 @@ const CodeBlock = ({ code }) => {
         if (copied) return
         copy(code)
         setCopied(true)
-        setTimeout(() => setCopied(false), 10000)
+        setTimeout(() => setCopied(false), 15000)
     }
     return (
         <div className={styles.container} onClick={handleCopyBtnClick}>

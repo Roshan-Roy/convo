@@ -1,0 +1,16 @@
+.container {
+    word-break: break-word;
+    line-height:1.5 ;
+    background-color: var(--sc);
+    color: white;
+    align-self: flex-start;
+    font-size: 15px;
+    padding: 12px 18px;
+    border-radius: 0 20px 20px 20px;
+}
+
+.mine {
+    align-self: flex-end;
+    background-color: var(--pc);
+    border-radius: 20px 0 20px 20px;
+}

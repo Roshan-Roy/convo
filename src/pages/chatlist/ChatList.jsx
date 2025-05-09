@@ -5,12 +5,12 @@ import { useAuth } from "../../providers/AuthProvider"
 import ChatCard from "../../components/chatCard/ChatCard"
 import styles from "./chatlist.module.css"
 import { MdHome } from "react-icons/md"
-import ChatListLoader from "../../components/loaders/chatListLoder/ChatListLoader"
 import { NavLink } from "react-router-dom"
-import ErrorCard from "../../components/errorCard/ErrorCard"
-import NoChats from "../../components/nochats/NoChats"
 import { PiChatSlashBold } from "react-icons/pi"
 import { RiChatSearchLine } from "react-icons/ri"
+import ICard from "../../components/ICard/ICard"
+import { MdErrorOutline } from "react-icons/md"
+import Loader from "../../components/loader/Loader"
 
 const ChatList = () => {
     const { user } = useAuth()
@@ -70,7 +70,7 @@ const ChatList = () => {
         return () => unsubscribe()
     }, [])
 
-    if (error) return <ErrorCard />
+    if (error) return <ICard main="An error occurred" sub="Try refreshing the page" icon={MdErrorOutline} />
 
     return (
         <>
@@ -82,9 +82,9 @@ const ChatList = () => {
             </div>
             <div className={styles.adjust}></div>
             <div className={styles.container}>
-                {loading ? <div className={styles.loading_wrapper}><ChatListLoader /></div>
-                    : users.length === 0 ? <NoChats text="No chats yet" icon={PiChatSlashBold} />
-                        : filteredUsers().length === 0 ? <NoChats text="No results" icon={RiChatSearchLine} />
+                {loading ? <div className={styles.loading_wrapper}><Loader /></div>
+                    : users.length === 0 ? <ICard main="No chats yet" icon={PiChatSlashBold} height={65} />
+                        : filteredUsers().length === 0 ? <ICard main="No results" icon={RiChatSearchLine} height={65} />
                             : filteredUsers().map(e => <ChatCard key={e.roomId} {...e} />)}
             </div>
         </>

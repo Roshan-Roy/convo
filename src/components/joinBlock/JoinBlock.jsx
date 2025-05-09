@@ -6,7 +6,7 @@ import { serverTimestamp } from "firebase/firestore"
 import styles from "./joinblock.module.css"
 import { useNavigate } from "react-router-dom"
 import errorToast from "../../toasts/error/errorToast"
-import StartChatLoader from "../loaders/StartChatLoader/StartChatLoader"
+import Loader from "../loader/Loader"
 
 const JoinBlock = () => {
     const navigate = useNavigate()
@@ -65,7 +65,7 @@ const JoinBlock = () => {
     return (
         <div className={styles.container}>
             <input type="text" placeholder="Enter chat code" value={code} onChange={handleOnChange} />
-            <div onClick={() => { if (code.trim() && !loading) handleChatBtnClick() }} className={styles.btn}>{loading ? <StartChatLoader /> : "Start Chat"}</div>
+            <div onClick={() => { if (code.trim() && !loading) handleChatBtnClick() }} className={styles.btn}>{loading ? <Loader width={25} color="#fff" /> : "Start Chat"}</div>
         </div>
     )
 }
