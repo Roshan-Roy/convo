@@ -1,7 +1,7 @@
 import { auth } from "../../config/firebase"
 import { signOut } from "firebase/auth"
 import { useAuth } from "../../providers/AuthProvider"
-import errorToast from "../../toasts/error/errorToast"
+import errorToast from "../errorToast/errorToast"
 import { RiLogoutCircleRLine } from "react-icons/ri"
 import styles from "./signoutbtn.module.css"
 

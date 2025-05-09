@@ -17,7 +17,7 @@ const Home = () => {
         <div className={styles.logged_container}>
           <CodeBlock code={user.id} />
           <JoinBlock />
-          <NavLink to="/chatlist" className={styles.link}>All Chats</NavLink>
+          <NavLink to="/chatlist" className={styles.link}>All chats</NavLink>
         </div>
         <SignOutBtn />
       </> : <GoogleSignInBtn />}

@@ -5,7 +5,7 @@ import { useAuth } from "../../providers/AuthProvider"
 import { setDoc, doc } from "firebase/firestore"
 import styles from "./gbtn.module.css"
 import { FcGoogle } from "react-icons/fc"
-import errorToast from "../../toasts/error/errorToast"
+import errorToast from "../errorToast/errorToast"
 
 const saveUserToFirestore = async (user) => {
     try {
