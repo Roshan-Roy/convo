@@ -1,6 +1,5 @@
 import { db, auth, googleProvider } from "../../config/firebase"
 import { signInWithPopup } from "firebase/auth"
-import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../providers/AuthProvider"
 import { setDoc, doc } from "firebase/firestore"
 import styles from "./gbtn.module.css"
@@ -24,7 +23,6 @@ const saveUserToFirestore = async (user) => {
 
 const GoogleSignInBtn = () => {
     const { setUser } = useAuth()
-    const navigate = useNavigate()
 
     const handleSignInWithGoogle = async () => {
         try {
