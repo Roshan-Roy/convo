@@ -36,7 +36,6 @@ const GoogleSignInBtn = () => {
                 email: user.email,
                 photoURL: user.photoURL
             })
-            navigate("/chatlist")
         } catch (e) {
             console.log(e)
         }
