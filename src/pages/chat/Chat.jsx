@@ -20,7 +20,6 @@ const Chat = () => {
   const [messages, setMessages] = useState([])
   const [btnLoading, setBtnLoading] = useState(false)
   const bottomRef = useRef(null)
-  const inputRef = useRef(null)
 
   const [pageLoading, setPageLoading] = useState(true)
   const [loading, setLoading] = useState(true)
@@ -141,18 +140,17 @@ const Chat = () => {
           <div className={styles.input_wrapper}>
             <div className={styles.input_container}>
               <input
+                id="message"
                 type="text"
                 placeholder="Message"
                 value={newMessage}
                 onChange={handleInputChange}
-                ref={inputRef}
-                onBlur={(e) => {
-                  e.target.focus()
-                }}
               />
-              <button onClick={handleSendBtn} disabled={btnLoading || !newMessage} className={styles.send_btn}>
-                {btnLoading ? <Loader width={18} color="#fff" /> : <IoSend className={styles.icon} />}
-              </button>
+              <label htmlFor="message">
+                <button onClick={handleSendBtn} disabled={btnLoading || !newMessage} className={styles.send_btn}>
+                  {btnLoading ? <Loader width={18} color="#fff" /> : <IoSend className={styles.icon} />}
+                </button>
+              </label>
             </div>
           </div>
         </>
