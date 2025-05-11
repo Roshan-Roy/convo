@@ -41,7 +41,6 @@ const ChatTopBar = ({ userId, setError }) => {
                     <NavLink to="/chatlist"><FaArrowLeft className={styles.icon} /></NavLink>
                 </div>
             </div>
-            <div className={styles.adjust}></div>
         </>
     )
 }
