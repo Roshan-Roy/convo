@@ -42,14 +42,14 @@ const Chat = () => {
       setBtnLoading(true)
       setNewMessage("")
       await addDoc(messagesSubCollectionRef, {
-        message: newMessage,
+        message: newMessage.trim(),
         senderId: user.id,
         sentAt: serverTimestamp()
       })
       const otherUserId = getOtherUserId(id, user.id)
       await updateDoc(croomRef, {
         [`notification.${otherUserId}`]: true,
-        lastMessage: newMessage,
+        lastMessage: newMessage.trim(),
         lastMessageAt: serverTimestamp()
       })
     } catch (e) {
@@ -145,12 +145,19 @@ const Chat = () => {
                 placeholder="Message"
                 value={newMessage}
                 onChange={handleInputChange}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' && !btnLoading && newMessage.trim()) {
+                    handleSendBtn()
+                  }
+                }}
                 onBlur={e => {
-                  e.target.focus()
+                  if (e.relatedTarget === null) {
+                    e.target.focus()
+                  }
                 }}
               />
               <label htmlFor="message">
-                <button onClick={handleSendBtn} disabled={btnLoading || !newMessage} className={styles.send_btn}>
+                <button onClick={handleSendBtn} disabled={btnLoading || !newMessage.trim()} className={styles.send_btn}>
                   {btnLoading ? <Loader width={18} color="#fff" /> : <IoSend className={styles.icon} />}
                 </button>
               </label>

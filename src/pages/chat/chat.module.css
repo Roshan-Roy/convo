@@ -48,6 +48,7 @@
     border: none;
     background-color: var(--pc);
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 .icon {
