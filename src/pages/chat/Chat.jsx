@@ -20,6 +20,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([])
   const [btnLoading, setBtnLoading] = useState(false)
   const bottomRef = useRef(null)
+  const inputRef = useRef(null)
 
   const [pageLoading, setPageLoading] = useState(true)
   const [loading, setLoading] = useState(true)
@@ -41,6 +42,9 @@ const Chat = () => {
     try {
       setBtnLoading(true)
       setNewMessage("")
+      setTimeout(() => {
+        inputRef.current?.focus()
+      }, 100);
       await addDoc(messagesSubCollectionRef, {
         message: newMessage,
         senderId: user.id,
@@ -144,6 +148,7 @@ const Chat = () => {
                 placeholder="Message"
                 value={newMessage}
                 onChange={handleInputChange}
+                ref={inputRef}
               />
               <button onClick={handleSendBtn} disabled={btnLoading || !newMessage} className={styles.send_btn}>
                 {btnLoading ? <Loader width={18} color="#fff" /> : <IoSend className={styles.icon} />}
