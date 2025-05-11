@@ -87,7 +87,7 @@ const Chat = () => {
         setPageLoading(false)
       }
     };
-    checkChatExists();
+    checkChatExists()
   }, []);
 
   useEffect(() => {
