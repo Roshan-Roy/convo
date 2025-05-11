@@ -42,9 +42,7 @@ const Chat = () => {
     try {
       setBtnLoading(true)
       setNewMessage("")
-      setTimeout(() => {
-        inputRef.current?.focus()
-      }, 100);
+      inputRef.current.focus()
       await addDoc(messagesSubCollectionRef, {
         message: newMessage,
         senderId: user.id,
