@@ -40,7 +40,6 @@ const Chat = () => {
   }
   const handleSendBtn = async () => {
     try {
-      inputRef.current.focus()
       setBtnLoading(true)
       setNewMessage("")
       await addDoc(messagesSubCollectionRef, {
@@ -147,6 +146,9 @@ const Chat = () => {
                 value={newMessage}
                 onChange={handleInputChange}
                 ref={inputRef}
+                onBlur={(e) => {
+                  e.target.focus()
+                }}
               />
               <button onClick={handleSendBtn} disabled={btnLoading || !newMessage} className={styles.send_btn}>
                 {btnLoading ? <Loader width={18} color="#fff" /> : <IoSend className={styles.icon} />}
