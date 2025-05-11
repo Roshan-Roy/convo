@@ -127,17 +127,16 @@ const Chat = () => {
 
   return (
     <>
+      <ChatTopBar userId={getOtherUserId(id, user.id)} setError={setError} />
       {loading ? <div className={styles.chat_loader}><Loader /></div>
         : <>
-          <div className={styles.message_wrapper}>
-            <ChatTopBar userId={getOtherUserId(id, user.id)} setError={setError} />
-            {messages.length === 0 ? <ICard main="No messages yet" icon={LuMessagesSquare} height={125} /> :
+          {messages.length === 0 ? <ICard main="No messages yet" icon={LuMessagesSquare} height={125} />
+            : <div className={styles.message_wrapper}>
               <div className={styles.message_container}>
                 {messages.map((e) => <Bubble key={e.id} {...e} />)}
                 <span ref={bottomRef}></span>
               </div>
-            }
-          </div>
+            </div>}
           <div className={styles.input_wrapper}>
             <div className={styles.input_container}>
               <input
