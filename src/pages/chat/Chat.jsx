@@ -40,9 +40,9 @@ const Chat = () => {
   }
   const handleSendBtn = async () => {
     try {
+      inputRef.current.focus()
       setBtnLoading(true)
       setNewMessage("")
-      inputRef.current.focus()
       await addDoc(messagesSubCollectionRef, {
         message: newMessage,
         senderId: user.id,
