@@ -1,7 +1,6 @@
 .message_wrapper {
-    height: calc(100dvh - 125px);
+    height: calc(100dvh - 60px);
     overflow-y: auto;
-    padding-top: 10px;
 }
 
 .message_container {
@@ -10,6 +9,7 @@
     flex-direction: column;
     gap: 7px;
     margin: 0 auto;
+    padding-top: 10px;
 }
 
 .input_wrapper {
