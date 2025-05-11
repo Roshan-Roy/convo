@@ -1,5 +1,5 @@
 .message_wrapper {
-    height: calc(100dvh - 60px);
+    height: calc(100svh - 60px);
     overflow-y: auto;
 }
 
