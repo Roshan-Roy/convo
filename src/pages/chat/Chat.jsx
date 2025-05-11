@@ -145,6 +145,9 @@ const Chat = () => {
                 placeholder="Message"
                 value={newMessage}
                 onChange={handleInputChange}
+                onBlur={e => {
+                  e.target.focus()
+                }}
               />
               <label htmlFor="message">
                 <button onClick={handleSendBtn} disabled={btnLoading || !newMessage} className={styles.send_btn}>
