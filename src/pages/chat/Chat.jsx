@@ -150,11 +150,7 @@ const Chat = () => {
                     handleSendBtn()
                   }
                 }}
-                onBlur={e => {
-                  if (e.relatedTarget === null) {
-                    e.target.focus()
-                  }
-                }}
+                onBlur={e => e.target.focus()}
               />
               <label htmlFor="message">
                 <button onClick={handleSendBtn} disabled={btnLoading || !newMessage.trim()} className={styles.send_btn}>
