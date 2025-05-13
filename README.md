@@ -2,7 +2,7 @@
 
 **Convo** is a real-time chat application built using **React** and **Firebase**, allowing users to create chat rooms using a unique code and engage in seamless messaging. The app provides an interactive platform for private conversations and real-time communication.
 
-🔗 **Live Preview**: [https://convo-app-link.com](https://convo-app-link.com)
+🔗 **Live Preview**: [https://convo-steel.vercel.app](https://convo-steel.vercel.app)
 
 ---
 
