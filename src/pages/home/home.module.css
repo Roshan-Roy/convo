@@ -25,14 +25,15 @@
     color: white;
 }
 
-.logged_container{
+.logged_container {
     display: flex;
     flex-direction: column;
     width: 70%;
     gap: 15px;
+    max-width: 400px;
 }
 
-.link{
+.link {
     display: block;
     background-color: var(--pc);
     text-decoration: none;
@@ -43,4 +44,12 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+}
+
+@media screen and (min-width: 480px) {
+    .icon {
+        font-size: 40px;
+        width: 100px;
+        height: 100px;
+    }
 }
